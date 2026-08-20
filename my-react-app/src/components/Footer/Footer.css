@@ -47,7 +47,7 @@
   letter-spacing: 0.08em;
   margin-bottom: var(--degnet-space-lg);
   padding-bottom: var(--degnet-space-sm);
-  border-bottom: 2px solid var(--degnet-gold);
+  border-bottom: 2px solid var(--degnet-gold); /* gold underline — matches csuganda.org heading accent */
   display: inline-block;
 }
 

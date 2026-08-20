@@ -1,8 +1,13 @@
 /* ==========================================================================
    DEGNET — Global Design System
    --------------------------------------------------------------------------
-   This file is the single source of truth for all design tokens and base
-   styles. Every component and page imports this via main.jsx.
+   Single source of truth for all design tokens and base styles.
+   Every component and page builds on these tokens — never use raw hex
+   values or hardcoded sizes in component CSS files.
+
+   Color reference : csuganda.org (Cheshire Services Uganda)
+   Font reference  : csuganda.org — Poppins + Roboto + Roboto Slab
+   Layout reference: csuganda.org — 1200px container, 60px section padding
 
    TABLE OF CONTENTS
    1. Design Tokens (CSS custom properties)
@@ -11,76 +16,120 @@
    4. Layout Utilities
    5. Button Styles
    6. Card Style
-   7. Page Header Band (maroon breadcrumb band used on inner pages)
+   7. Page Header Band
    ========================================================================== */
 
 
 /* ==========================================================================
    1. DESIGN TOKENS
    --------------------------------------------------------------------------
-   Colors are sampled from:
-     - DEGNET logo file  → --degnet-green, --degnet-purple, --degnet-gold,
-                           --degnet-accent-line
-     - fidelity 2.jpg    → --degnet-primary, --degnet-bg, --degnet-card-bg,
-                           --degnet-text, --degnet-text-muted
-     - csuganda.org      → spacing rhythm, font pairing, card shadow style
+   All values are sampled directly from csuganda.org's computed CSS, with
+   DEGNET's own brand colors (green, purple, gold, accent-line) layered on
+   top from the logo file.
    ========================================================================== */
 
 :root {
-  /* --- Brand colors (from logo) --- */
-  --degnet-green:       #2d5a3d; /* dark forest green — tall silhouette figures  */
-  --degnet-purple:      #7b5ea7; /* muted purple — shorter figures & hands       */
-  --degnet-gold:        #c8922a; /* gold/amber — sunburst rays                   */
-  --degnet-accent-line: #e05a6b; /* red/pink — thin rule beneath the hands       */
 
-  /* --- Primary palette (from mockup) --- */
-  --degnet-primary:     #6b1a2a; /* deep maroon — nav donate btn, bands, CTAs    */
-  --degnet-primary-hover: #541525; /* slightly darker maroon for hover states    */
-  --degnet-bg:          #faf8f5; /* warm cream — general page background         */
-  --degnet-card-bg:     #ffffff; /* white — card backgrounds                     */
-  --degnet-text:        #1a1a1a; /* near-black — headings and body text          */
-  --degnet-text-muted:  #6b6b6b; /* muted gray — secondary/supporting text       */
-  --degnet-border:      #e8e4df; /* subtle warm border                           */
+  /* ── Primary palette (from csuganda.org) ──────────────────────────────── */
 
-  /* --- Shadows (soft, low-opacity — matching csuganda.org card style) --- */
-  --degnet-shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
-  --degnet-shadow-md:   0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
-  --degnet-shadow-lg:   0 10px 24px rgba(0, 0, 0, 0.10), 0 4px 8px rgba(0, 0, 0, 0.06);
+  /* Deep maroon — the dominant brand color.
+     Used for: nav Donate button, page-header bands, section headings,
+     card icon backgrounds, CTA banners, footer background.
+     Source: #7C0000 appears 40+ times in csuganda.org's stylesheet. */
+  --degnet-primary:       #7C0000;
 
-  /* --- Border radius scale --- */
-  --degnet-radius-sm:   4px;
-  --degnet-radius-md:   8px;
-  --degnet-radius-lg:   12px;
-  --degnet-radius-pill: 999px;
+  /* Slightly darker maroon for hover/active states */
+  --degnet-primary-dark:  #5e0000;
 
-  /* --- Typography --- */
-  /* Heading font: Georgia-first serif stack for authority and warmth          */
-  /* Body font: system-ui stack for readability and performance (no web font   */
-  /*   download needed — matches csuganda.org's approach)                      */
-  --degnet-font-heading: Georgia, 'Times New Roman', serif;
-  --degnet-font-body:    system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  /* Warm off-white/cream — general page background.
+     Source: background-color:#F7F5EF on csuganda.org section rows. */
+  --degnet-bg:            #F7F5EF;
 
-  /* --- Font size scale --- */
-  --degnet-text-sm:     0.875rem; /* 14px — labels, captions                    */
-  --degnet-text-base:   1rem;     /* 16px — body copy                           */
-  --degnet-text-md:     1.125rem; /* 18px — lead paragraphs                     */
-  --degnet-text-lg:     1.25rem;  /* 20px — card titles, nav links              */
-  --degnet-text-xl:     1.5rem;   /* 24px — section subheadings (h3)            */
-  --degnet-text-2xl:    2rem;     /* 32px — section headings (h2)               */
-  --degnet-text-3xl:    2.75rem;  /* 44px — page headings (h1)                  */
+  /* White — card backgrounds, text on dark sections */
+  --degnet-card-bg:       #FFFFFF;
 
-  /* --- Spacing scale (used for padding/margin/gap) --- */
-  --degnet-space-xs:    0.25rem;  /* 4px  */
-  --degnet-space-sm:    0.5rem;   /* 8px  */
-  --degnet-space-md:    1rem;     /* 16px */
-  --degnet-space-lg:    1.5rem;   /* 24px */
-  --degnet-space-xl:    2rem;     /* 32px */
-  --degnet-space-2xl:   3rem;     /* 48px */
-  --degnet-space-3xl:   4rem;     /* 64px */
-  --degnet-space-4xl:   5rem;     /* 80px */
+  /* Light pink tint — card hover backgrounds, hero overlays, section tints.
+     Source: background-color:#FEE9E6 on csuganda.org card hover + hero. */
+  --degnet-tint:          #FEE9E6;
 
-  /* --- Layout --- */
-  --degnet-container:   1280px;   /* max content width — matches csuganda.org   */
+  /* Gold/amber — used to highlight <b> words inside headings.
+     Source: color:#F4B03E in csuganda.org heading custom CSS. */
+  --degnet-gold:          #F4B03E;
+
+  /* ── Text colors ──────────────────────────────────────────────────────── */
+
+  /* Near-black for headings */
+  --degnet-text:          #1a1a1a;
+
+  /* Muted gray for body paragraphs.
+     Source: --e-global-color-text:#7A7A7A on csuganda.org. */
+  --degnet-text-muted:    #7A7A7A;
+
+  /* Secondary text — slightly darker muted.
+     Source: --e-global-color-secondary:#54595F on csuganda.org. */
+  --degnet-text-secondary: #54595F;
+
+  /* ── DEGNET logo brand colors ─────────────────────────────────────────── */
+  /* These are used for icon accents and decorative elements only.
+     They do NOT override the primary maroon for buttons/headings. */
+
+  /* Dark forest green — tall silhouette figures in the logo */
+  --degnet-green:         #2d5a3d;
+
+  /* Muted purple — shorter figures and outlined hands in the logo */
+  --degnet-purple:        #7b5ea7;
+
+  /* Red/pink — thin horizontal rule beneath the hands in the logo */
+  --degnet-accent-line:   #e05a6b;
+
+  /* ── Borders ──────────────────────────────────────────────────────────── */
+  --degnet-border:        #e8e4df;
+
+  /* ── Shadows (soft, low-opacity — matching csuganda.org card style) ───── */
+  --degnet-shadow-sm:     0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --degnet-shadow-md:     0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+  --degnet-shadow-lg:     0 10px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+
+  /* ── Border radius ────────────────────────────────────────────────────── */
+  /* csuganda.org uses 30px pill-style radius on cards and buttons */
+  --degnet-radius-sm:     6px;
+  --degnet-radius-md:     12px;
+  --degnet-radius-lg:     30px;   /* primary card radius — matches csuganda.org */
+  --degnet-radius-pill:   999px;  /* fully pill-shaped buttons */
+
+  /* ── Typography ───────────────────────────────────────────────────────── */
+  /* Exact font stack from csuganda.org's Elementor global kit:
+       Headings    → Poppins 700
+       Body        → Roboto 400
+       Subheadings → Roboto Slab 400
+       Buttons     → Roboto 500
+     Loaded via Google Fonts in index.html */
+  --degnet-font-heading:    'Poppins', sans-serif;
+  --degnet-font-body:       'Roboto', sans-serif;
+  --degnet-font-subheading: 'Roboto Slab', serif;
+
+  /* ── Font size scale ──────────────────────────────────────────────────── */
+  --degnet-text-sm:   0.875rem;  /* 14px — labels, captions, utility bar     */
+  --degnet-text-base: 1rem;      /* 16px — body copy, list items             */
+  --degnet-text-md:   1.125rem;  /* 18px — lead paragraphs                   */
+  --degnet-text-lg:   1.25rem;   /* 20px — card titles, nav links            */
+  --degnet-text-xl:   1.5rem;    /* 24px — section subheadings (h3)          */
+  --degnet-text-2xl:  2rem;      /* 32px — section headings (h2)             */
+  --degnet-text-3xl:  2.75rem;   /* 44px — page headings (h1)                */
+
+  /* ── Spacing scale ────────────────────────────────────────────────────── */
+  --degnet-space-xs:  0.25rem;   /*  4px */
+  --degnet-space-sm:  0.5rem;    /*  8px */
+  --degnet-space-md:  1rem;      /* 16px */
+  --degnet-space-lg:  1.5rem;    /* 24px */
+  --degnet-space-xl:  2rem;      /* 32px */
+  --degnet-space-2xl: 3rem;      /* 48px */
+  --degnet-space-3xl: 3.75rem;   /* 60px — matches csuganda.org section padding */
+  --degnet-space-4xl: 5rem;      /* 80px */
+
+  /* ── Layout ───────────────────────────────────────────────────────────── */
+  /* 1200px matches csuganda.org's .elementor-section-boxed max-width */
+  --degnet-container: 1200px;
 }
 
 
@@ -97,7 +146,6 @@
 }
 
 html {
-  /* Smooth scrolling for anchor links */
   scroll-behavior: smooth;
 }
 
@@ -105,7 +153,7 @@ body {
   font-family: var(--degnet-font-body);
   font-size: var(--degnet-text-base);
   line-height: 1.6;
-  color: var(--degnet-text);
+  color: var(--degnet-text-muted);
   background-color: var(--degnet-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -145,21 +193,37 @@ h4,
 h5,
 h6 {
   font-family: var(--degnet-font-heading);
-  color: var(--degnet-text);
-  line-height: 1.2;
+  font-weight: 700;
+  color: var(--degnet-primary);  /* csuganda.org: all headings use #7C0000 */
+  line-height: 1.25;
 }
 
 h1 { font-size: var(--degnet-text-3xl); }
 h2 { font-size: var(--degnet-text-2xl); }
 h3 { font-size: var(--degnet-text-xl);  }
 
-p {
-  color: var(--degnet-text-muted);
-  line-height: 1.7;
+/* Gold highlight — wrap key words in <b> inside headings.
+   Matches csuganda.org's pattern: h2 b { color: #F4B03E } */
+h1 b,
+h2 b,
+h3 b {
+  color: var(--degnet-gold);
+  font-weight: 700;
 }
 
-/* Responsive type — scale down on smaller screens */
-@media (max-width: 768px) {
+p {
+  font-family: var(--degnet-font-body);
+  color: var(--degnet-text-muted);
+  line-height: 1.75;
+}
+
+/* Responsive type */
+@media (max-width: 1024px) {
+  h1 { font-size: 2.5rem;  }
+  h2 { font-size: 1.75rem; }
+}
+
+@media (max-width: 767px) {
   h1 { font-size: 2rem;    }
   h2 { font-size: 1.5rem;  }
   h3 { font-size: 1.25rem; }
@@ -170,7 +234,8 @@ p {
    4. LAYOUT UTILITIES
    ========================================================================== */
 
-/* .container — centers content and enforces max-width on every section */
+/* .container — centers content and enforces max-width on every section.
+   1200px matches csuganda.org's container width exactly. */
 .container {
   width: 100%;
   max-width: var(--degnet-container);
@@ -178,19 +243,34 @@ p {
   padding-inline: var(--degnet-space-xl);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container {
     padding-inline: var(--degnet-space-md);
   }
 }
+
+/* .section — consistent vertical padding on every page section.
+   60px matches csuganda.org's section padding rhythm. */
+.section {
+  padding-block: var(--degnet-space-3xl);
+}
+
+/* Alternate section background — cream vs white, matching csuganda.org */
+.section--cream { background-color: var(--degnet-bg);      }
+.section--white { background-color: var(--degnet-card-bg); }
+.section--tint  { background-color: var(--degnet-tint);    }
+.section--dark  { background-color: var(--degnet-primary); }
 
 
 /* ==========================================================================
    5. BUTTON STYLES
    --------------------------------------------------------------------------
    Two variants only — no third button style should ever be introduced.
-     .btn-primary   → filled maroon, white text
-     .btn-secondary → transparent background, maroon border and text
+     .btn-primary   → filled maroon, white text  (pill shape, 30px radius)
+     .btn-secondary → transparent bg, maroon border and text
+
+   Both match csuganda.org's button style exactly:
+     border-radius: 30px, font-family: Roboto, font-weight: 500/700
    ========================================================================== */
 
 .btn-primary,
@@ -198,16 +278,16 @@ p {
   display: inline-flex;
   align-items: center;
   gap: var(--degnet-space-sm);
-  padding: 0.75rem 1.75rem;
-  font-size: var(--degnet-text-base);
-  font-weight: 600;
+  padding: 0.75rem 2rem;
   font-family: var(--degnet-font-body);
-  border-radius: var(--degnet-radius-pill);
+  font-size: var(--degnet-text-base);
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-  /* Ensure buttons are always accessible via keyboard */
+  border-radius: var(--degnet-radius-lg);  /* 30px — csuganda.org pill style */
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
   outline-offset: 3px;
+  cursor: pointer;
 }
 
 .btn-primary {
@@ -218,8 +298,8 @@ p {
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background-color: var(--degnet-primary-hover);
-  border-color: var(--degnet-primary-hover);
+  background-color: var(--degnet-primary-dark);
+  border-color: var(--degnet-primary-dark);
   box-shadow: var(--degnet-shadow-md);
 }
 
@@ -236,7 +316,7 @@ p {
   box-shadow: var(--degnet-shadow-md);
 }
 
-/* Focus ring for keyboard accessibility on both variants */
+/* Keyboard focus ring — gold outline for visibility */
 .btn-primary:focus-visible,
 .btn-secondary:focus-visible {
   outline: 3px solid var(--degnet-gold);
@@ -247,28 +327,29 @@ p {
    6. CARD STYLE
    --------------------------------------------------------------------------
    Base card used across thematic areas, news, team, work area sections.
-   Components can extend this with additional rules as needed.
+   30px radius and #FEE9E6 hover tint match csuganda.org's card style.
    ========================================================================== */
 
 .card {
   background-color: var(--degnet-card-bg);
-  border-radius: var(--degnet-radius-lg);
+  border-radius: var(--degnet-radius-lg);  /* 30px */
   box-shadow: var(--degnet-shadow-sm);
   overflow: hidden;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .card:hover {
+  background-color: var(--degnet-tint);   /* #FEE9E6 — csuganda.org hover tint */
   box-shadow: var(--degnet-shadow-lg);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 
 /* ==========================================================================
    7. PAGE HEADER BAND
    --------------------------------------------------------------------------
-   The full-width maroon band with page title + breadcrumb used on every
-   inner page (About, Our Work, Our Impact, News, Contact).
+   Full-width maroon band with page title + breadcrumb.
+   Used on every inner page: About, Our Work, Our Impact, News, Contact.
    ========================================================================== */
 
 .page-header-band {

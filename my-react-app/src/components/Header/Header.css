@@ -133,7 +133,8 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--degnet-primary);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .main-nav__wordmark-tagline {
@@ -154,9 +155,10 @@
 }
 
 .main-nav__link {
+  font-family: var(--degnet-font-body);
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--degnet-text);
+  color: var(--degnet-text-secondary);
   padding: var(--degnet-space-xs) var(--degnet-space-sm);
   border-radius: var(--degnet-radius-sm);
   transition: color 0.2s ease;
@@ -177,7 +179,8 @@
 .main-nav__donate {
   flex-shrink: 0;
   font-size: var(--degnet-text-sm);
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--degnet-radius-lg); /* 30px pill — matches csuganda.org */
 }
 
 /* Hamburger — hidden on desktop */
