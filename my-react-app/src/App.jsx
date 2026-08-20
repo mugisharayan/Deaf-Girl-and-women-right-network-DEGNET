@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Home     from './pages/Home'
-import About    from './pages/About'
-import OurWork  from './pages/OurWork'
+import Header    from './components/Header/Header'
+import Footer    from './components/Footer/Footer'
+import Home      from './pages/Home'
+import About     from './pages/About'
+import OurWork   from './pages/OurWork'
 import OurImpact from './pages/OurImpact'
-import News     from './pages/News'
-import Contact  from './pages/Contact'
+import News      from './pages/News'
+import Contact   from './pages/Contact'
 
 /*
  * App — root component
@@ -25,7 +27,7 @@ import Contact  from './pages/Contact'
 function App() {
   return (
     <BrowserRouter>
-      {/* Global Header goes here — Prompt 1 */}
+      <Header />
 
       <Routes>
         <Route path="/"           element={<Home />}      />
@@ -36,7 +38,7 @@ function App() {
         <Route path="/contact"    element={<Contact />}   />
       </Routes>
 
-      {/* Global Footer goes here — Prompt 1 */}
+      <Footer />
     </BrowserRouter>
   )
 }

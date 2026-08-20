@@ -1,0 +1,304 @@
+/* ==========================================================================
+   Header — site-header, utility-bar, main-nav, mobile-drawer
+   ========================================================================== */
+
+/* ── Wrapper ─────────────────────────────────────────────────────────────── */
+
+.site-header {
+  width: 100%;
+  background-color: var(--degnet-card-bg);
+  z-index: 1000;
+  /* Reserve space so page content doesn't jump when header becomes sticky */
+}
+
+.site-header.is-sticky {
+  position: sticky;
+  top: 0;
+  box-shadow: var(--degnet-shadow-md);
+}
+
+
+/* ==========================================================================
+   Utility bar — top strip with contact info and social icons
+   ========================================================================== */
+
+.utility-bar {
+  background-color: var(--degnet-bg);
+  border-bottom: 1px solid var(--degnet-border);
+  font-size: var(--degnet-text-sm);
+  color: var(--degnet-text-muted);
+}
+
+.utility-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--degnet-space-md);
+  padding-block: var(--degnet-space-sm);
+}
+
+.utility-bar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--degnet-space-xs);
+}
+
+.utility-bar__link {
+  color: var(--degnet-text-muted);
+  transition: color 0.2s ease;
+}
+
+.utility-bar__link:hover {
+  color: var(--degnet-primary);
+}
+
+.utility-bar__center {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-lg);
+}
+
+.utility-bar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-sm);
+}
+
+/* Small circular social icon buttons */
+.utility-bar__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--degnet-border);
+  color: var(--degnet-text-muted);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.utility-bar__social:hover {
+  background-color: var(--degnet-primary);
+  color: #ffffff;
+}
+
+/* Hide utility bar on small screens to save space */
+@media (max-width: 768px) {
+  .utility-bar {
+    display: none;
+  }
+}
+
+
+/* ==========================================================================
+   Main nav bar — logo, nav links, donate button
+   ========================================================================== */
+
+.main-nav {
+  background-color: var(--degnet-card-bg);
+  border-bottom: 1px solid var(--degnet-border);
+}
+
+.main-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--degnet-space-lg);
+  padding-block: var(--degnet-space-sm);
+}
+
+/* Logo + wordmark lockup */
+.main-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-sm);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.main-nav__logo {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.main-nav__wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.main-nav__wordmark-name {
+  font-family: var(--degnet-font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--degnet-primary);
+  letter-spacing: 0.04em;
+}
+
+.main-nav__wordmark-tagline {
+  font-size: 0.65rem;
+  color: var(--degnet-text-muted);
+  letter-spacing: 0.02em;
+  max-width: 180px;
+  line-height: 1.3;
+}
+
+/* Desktop nav links */
+.main-nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-xs);
+  flex: 1;
+  justify-content: center;
+}
+
+.main-nav__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--degnet-text);
+  padding: var(--degnet-space-xs) var(--degnet-space-sm);
+  border-radius: var(--degnet-radius-sm);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.main-nav__link:hover {
+  color: var(--degnet-primary);
+}
+
+.main-nav__link.is-active {
+  color: var(--degnet-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--degnet-primary);
+}
+
+/* Donate button — desktop */
+.main-nav__donate {
+  flex-shrink: 0;
+  font-size: var(--degnet-text-sm);
+  padding: 0.5rem 1.25rem;
+}
+
+/* Hamburger — hidden on desktop */
+.main-nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--degnet-radius-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Three-line hamburger icon that animates to X */
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 22px;
+}
+
+.hamburger-icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--degnet-text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* Animate to X when open */
+.hamburger-icon.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-icon.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-icon.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ==========================================================================
+   Mobile drawer — slides down below 1024px
+   ========================================================================== */
+
+.mobile-drawer {
+  display: none; /* shown only on mobile via media query below */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--degnet-card-bg);
+  padding: 100px var(--degnet-space-xl) var(--degnet-space-xl);
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-drawer.is-open {
+  transform: translateX(0);
+}
+
+.mobile-drawer ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-xs);
+}
+
+.mobile-drawer__link {
+  display: block;
+  font-size: var(--degnet-text-lg);
+  font-weight: 500;
+  color: var(--degnet-text);
+  padding: var(--degnet-space-md) 0;
+  border-bottom: 1px solid var(--degnet-border);
+  transition: color 0.2s ease;
+}
+
+.mobile-drawer__link:hover,
+.mobile-drawer__link.is-active {
+  color: var(--degnet-primary);
+}
+
+.mobile-drawer__donate {
+  margin-top: var(--degnet-space-lg);
+  width: 100%;
+  justify-content: center;
+}
+
+/* Semi-transparent overlay behind the drawer */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+}
+
+
+/* ==========================================================================
+   Responsive — switch to hamburger below 1024px
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .main-nav__links,
+  .main-nav__donate {
+    display: none;
+  }
+
+  .main-nav__hamburger {
+    display: flex;
+  }
+
+  .mobile-drawer {
+    display: block;
+  }
+}

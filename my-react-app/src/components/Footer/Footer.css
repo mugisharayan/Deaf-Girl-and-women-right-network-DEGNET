@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Footer — site-footer, 4-column grid, bottom bar
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--degnet-primary);
+  color: rgba(255, 255, 255, 0.85);
+  padding-top: var(--degnet-space-3xl);
+}
+
+
+/* ==========================================================================
+   Four-column grid
+   ========================================================================== */
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr 1.2fr;
+  gap: var(--degnet-space-2xl);
+  padding-bottom: var(--degnet-space-3xl);
+}
+
+@media (max-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--degnet-space-xl);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   Column shared styles
+   ========================================================================== */
+
+.footer__heading {
+  font-family: var(--degnet-font-heading);
+  font-size: var(--degnet-text-base);
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--degnet-space-lg);
+  padding-bottom: var(--degnet-space-sm);
+  border-bottom: 2px solid var(--degnet-gold);
+  display: inline-block;
+}
+
+
+/* ==========================================================================
+   Column 1 — Brand
+   ========================================================================== */
+
+.footer__brand {
+  display: inline-block;
+  margin-bottom: var(--degnet-space-md);
+}
+
+.footer__logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  /* Slight brightness boost so the logo reads well on dark background */
+  filter: brightness(1.1);
+}
+
+.footer__description {
+  font-size: var(--degnet-text-sm);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  margin-bottom: var(--degnet-space-lg);
+}
+
+.footer__socials {
+  display: flex;
+  gap: var(--degnet-space-sm);
+}
+
+.footer__social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer__social-icon:hover {
+  background-color: #ffffff;
+  color: var(--degnet-primary);
+  border-color: #ffffff;
+}
+
+
+/* ==========================================================================
+   Column 2 & 3 — Lists
+   ========================================================================== */
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-sm);
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--degnet-space-xs);
+  font-size: var(--degnet-text-sm);
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+  color: #ffffff;
+}
+
+.footer__list-item {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--degnet-space-xs);
+  font-size: var(--degnet-text-sm);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.footer__list-item svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+
+/* ==========================================================================
+   Column 4 — Contact list
+   ========================================================================== */
+
+.footer__contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-md);
+}
+
+.footer__contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--degnet-space-sm);
+  font-size: var(--degnet-text-sm);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.footer__contact-list svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--degnet-gold);
+}
+
+.footer__contact-link {
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s ease;
+  word-break: break-all;
+}
+
+.footer__contact-link:hover {
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
+   Bottom bar — copyright + legal links
+   ========================================================================== */
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-block: var(--degnet-space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--degnet-space-md);
+  flex-wrap: wrap;
+}
+
+.footer__copyright {
+  font-size: var(--degnet-text-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer__legal {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-sm);
+  font-size: var(--degnet-text-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer__legal-link {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s ease;
+}
+
+.footer__legal-link:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
