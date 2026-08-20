@@ -1,0 +1,444 @@
+/* ==========================================================================
+   Home Page Styles
+   --------------------------------------------------------------------------
+   All values reference design tokens from index.css.
+   No raw hex values or hardcoded sizes — use CSS custom properties only.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Shared section utilities
+   ========================================================================== */
+
+/* Centered section heading block used in most sections */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--degnet-space-2xl);
+}
+
+.section-header h2 {
+  margin-bottom: var(--degnet-space-sm);
+}
+
+.section-header p {
+  max-width: 600px;
+  margin-inline: auto;
+  font-size: var(--degnet-text-md);
+}
+
+/* Row variant — heading on left, "View All" link on right */
+.section-header--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  flex-wrap: wrap;
+  gap: var(--degnet-space-md);
+}
+
+.section-header__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--degnet-space-xs);
+  font-family: var(--degnet-font-body);
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: gap 0.2s ease;
+}
+
+.section-header__link:hover {
+  gap: var(--degnet-space-sm);
+}
+
+
+/* ==========================================================================
+   Section 1 — Hero
+   ========================================================================== */
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--degnet-space-3xl);
+  min-height: 560px;
+}
+
+/* Left column — text */
+.hero__eyebrow {
+  font-family: var(--degnet-font-body);
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--degnet-space-md);
+}
+
+.hero__heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: var(--degnet-space-md);
+}
+
+.hero__subheading {
+  font-family: var(--degnet-font-subheading);
+  font-size: var(--degnet-text-lg);
+  color: var(--degnet-text-secondary);
+  margin-bottom: var(--degnet-space-md);
+}
+
+.hero__body {
+  font-size: var(--degnet-text-md);
+  max-width: 480px;
+  margin-bottom: var(--degnet-space-xl);
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--degnet-space-md);
+  flex-wrap: wrap;
+}
+
+/* Right column — image */
+.hero__image-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/* Placeholder shown until real photo is supplied */
+.hero__image-placeholder {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 3;
+  background-color: var(--degnet-tint);
+  border-radius: var(--degnet-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--degnet-space-sm);
+  color: var(--degnet-primary);
+  text-align: center;
+  padding: var(--degnet-space-xl);
+}
+
+.hero__image-placeholder p {
+  font-weight: 600;
+  color: var(--degnet-primary);
+}
+
+.hero__image-placeholder span {
+  font-size: var(--degnet-text-sm);
+  color: var(--degnet-text-muted);
+}
+
+@media (max-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: var(--degnet-space-xl);
+  }
+
+  .hero__image-wrap {
+    order: -1; /* image above text on tablet */
+  }
+
+  .hero__image-placeholder {
+    max-width: 100%;
+    aspect-ratio: 16 / 7;
+  }
+
+  .hero__body {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__actions .btn-primary,
+  .hero__actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ==========================================================================
+   Section 2 — Stats strip
+   ========================================================================== */
+
+.stats {
+  padding-block: var(--degnet-space-2xl);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--degnet-space-md);
+}
+
+.stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--degnet-space-lg) var(--degnet-space-md);
+  border-right: 1px solid var(--degnet-border);
+}
+
+.stats__item:last-child {
+  border-right: none;
+}
+
+.stats__number {
+  font-family: var(--degnet-font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--degnet-primary);
+  line-height: 1;
+  margin-bottom: var(--degnet-space-xs);
+}
+
+.stats__label {
+  font-size: var(--degnet-text-sm);
+  color: var(--degnet-text-muted);
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .stats__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stats__item:nth-child(3) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats__item {
+    border-right: none;
+    border-bottom: 1px solid var(--degnet-border);
+  }
+
+  .stats__item:last-child {
+    border-bottom: none;
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* ==========================================================================
+   Section 3 — Thematic Areas
+   ========================================================================== */
+
+.thematic__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--degnet-space-lg);
+}
+
+.thematic__card {
+  padding: var(--degnet-space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-md);
+}
+
+/* Circular icon badge — maroon background, white icon */
+.thematic__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--degnet-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.thematic__title {
+  font-size: var(--degnet-text-lg);
+  color: var(--degnet-primary);
+  line-height: 1.3;
+}
+
+.thematic__desc {
+  font-size: var(--degnet-text-base);
+  flex: 1; /* push the link to the bottom */
+}
+
+.thematic__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--degnet-space-xs);
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: auto;
+  transition: gap 0.2s ease;
+}
+
+.thematic__link:hover {
+  gap: var(--degnet-space-sm);
+}
+
+@media (max-width: 1024px) {
+  .thematic__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .thematic__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   Section 4 — Latest News
+   ========================================================================== */
+
+.news__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--degnet-space-lg);
+}
+
+.news__card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Placeholder shown until real news photos are supplied */
+.news__image-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--degnet-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--degnet-primary);
+  flex-shrink: 0;
+}
+
+.news__body {
+  padding: var(--degnet-space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-sm);
+  flex: 1;
+}
+
+.news__date {
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.news__title {
+  font-size: var(--degnet-text-lg);
+  color: var(--degnet-primary);
+  line-height: 1.35;
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .news__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .news__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   Section 5 — Partners
+   ========================================================================== */
+
+.partners__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--degnet-space-lg);
+}
+
+/* Text badge placeholder — swap with <img> when real logos are supplied */
+.partners__badge {
+  padding: var(--degnet-space-md) var(--degnet-space-xl);
+  border: 2px solid var(--degnet-border);
+  border-radius: var(--degnet-radius-lg);
+  font-family: var(--degnet-font-body);
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-text-secondary);
+  background-color: var(--degnet-card-bg);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.partners__badge:hover {
+  border-color: var(--degnet-primary);
+  color: var(--degnet-primary);
+}
+
+
+/* ==========================================================================
+   Section 6 — CTA Banner
+   ========================================================================== */
+
+.cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--degnet-space-lg);
+}
+
+.cta__icon {
+  color: var(--degnet-gold);
+}
+
+.cta__heading {
+  color: #ffffff;
+  max-width: 640px;
+  font-size: var(--degnet-text-2xl);
+  line-height: 1.3;
+}
+
+/* On dark background, override the gold <b> to white for readability */
+.cta__heading b {
+  color: var(--degnet-gold);
+}
+
+/* White outline button on dark background */
+.cta__btn {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.cta__btn:hover {
+  background-color: #ffffff;
+  color: var(--degnet-primary);
+}
