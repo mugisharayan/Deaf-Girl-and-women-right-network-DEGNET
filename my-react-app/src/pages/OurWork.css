@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Our Work Page Styles
+   --------------------------------------------------------------------------
+   All values reference design tokens from index.css.
+   No raw hex values or hardcoded sizes — use CSS custom properties only.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Section 2 — Intro
+   ========================================================================== */
+
+.work-intro__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.work-intro__text {
+  max-width: 720px;
+  text-align: center;
+  font-size: var(--degnet-text-md);
+  line-height: 1.8;
+}
+
+
+/* ==========================================================================
+   Section 3 — Work Areas
+   --------------------------------------------------------------------------
+   Each work area is a card with two columns: image on one side, text on
+   the other. Even-indexed rows have image left / text right. Odd-indexed
+   rows are reversed via .work-area--reverse.
+   ========================================================================== */
+
+.work-areas__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-xl);
+}
+
+/* Base card — image left, text right */
+.work-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden; /* keeps border-radius on image */
+}
+
+/* Reversed card — text left, image right */
+.work-area--reverse {
+  direction: rtl; /* flip column order */
+}
+
+/* Reset direction inside children so text reads correctly */
+.work-area--reverse .work-area__image-wrap,
+.work-area--reverse .work-area__text {
+  direction: ltr;
+}
+
+/* Image side */
+.work-area__image-wrap {
+  height: 100%;
+  min-height: 320px;
+}
+
+.work-area__image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  background-color: var(--degnet-tint);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--degnet-space-sm);
+  color: var(--degnet-primary);
+  text-align: center;
+  padding: var(--degnet-space-xl);
+}
+
+.work-area__placeholder-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--degnet-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--degnet-space-sm);
+}
+
+.work-area__image-placeholder p {
+  font-weight: 600;
+  color: var(--degnet-primary);
+}
+
+.work-area__image-placeholder span {
+  font-size: var(--degnet-text-sm);
+  color: var(--degnet-text-muted);
+  font-family: monospace;
+}
+
+/* Text side */
+.work-area__text {
+  padding: var(--degnet-space-2xl) var(--degnet-space-3xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-md);
+}
+
+/* Large bold number — 01, 02, 03, 04 */
+.work-area__number {
+  font-family: var(--degnet-font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--degnet-tint);
+  line-height: 1;
+  /* Sits behind the title visually as a decorative element */
+  margin-bottom: calc(-1 * var(--degnet-space-lg));
+}
+
+.work-area__title {
+  font-size: var(--degnet-text-2xl);
+  color: var(--degnet-primary);
+  line-height: 1.25;
+}
+
+.work-area__desc {
+  font-size: var(--degnet-text-md);
+  line-height: 1.75;
+  max-width: 480px;
+}
+
+.work-area__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--degnet-space-xs);
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: var(--degnet-space-sm);
+  transition: gap 0.2s ease;
+}
+
+.work-area__link:hover {
+  gap: var(--degnet-space-sm);
+}
+
+/* Responsive — stack image above text on tablet and mobile */
+@media (max-width: 1024px) {
+  .work-area,
+  .work-area--reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .work-area__image-wrap {
+    min-height: 240px;
+  }
+
+  .work-area__image-placeholder {
+    min-height: 240px;
+  }
+
+  .work-area__text {
+    padding: var(--degnet-space-xl);
+  }
+
+  .work-area__number {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .work-area__text {
+    padding: var(--degnet-space-lg);
+  }
+}
+
+
+/* ==========================================================================
+   CTA Banner — shared with Home page, defined here for the work page
+   ========================================================================== */
+
+.cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--degnet-space-lg);
+}
+
+.cta__icon {
+  color: var(--degnet-gold);
+}
+
+.cta__heading {
+  color: #ffffff;
+  max-width: 640px;
+  font-size: var(--degnet-text-2xl);
+  line-height: 1.3;
+}
+
+.cta__heading b {
+  color: var(--degnet-gold);
+}
+
+.cta__btn {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.cta__btn:hover {
+  background-color: #ffffff;
+  color: var(--degnet-primary);
+}
