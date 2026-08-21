@@ -1,0 +1,307 @@
+/* ==========================================================================
+   Our Impact Page Styles
+   --------------------------------------------------------------------------
+   All values reference design tokens from index.css.
+   No raw hex values or hardcoded sizes — use CSS custom properties only.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Section 2 — Intro
+   ========================================================================== */
+
+.impact-intro__text {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+  font-size: var(--degnet-text-md);
+  line-height: 1.8;
+}
+
+
+/* ==========================================================================
+   Section 3 — Stats row (icon + number + label cards)
+   ========================================================================== */
+
+.impact-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--degnet-space-lg);
+}
+
+.impact-stats__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--degnet-space-xl) var(--degnet-space-md);
+  gap: var(--degnet-space-sm);
+}
+
+.impact-stats__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--degnet-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: var(--degnet-space-sm);
+}
+
+.impact-stats__number {
+  font-family: var(--degnet-font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--degnet-primary);
+  line-height: 1;
+}
+
+.impact-stats__label {
+  font-size: var(--degnet-text-sm);
+  color: var(--degnet-text-muted);
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .impact-stats__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .impact-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ==========================================================================
+   Section 4 — Impact Areas
+   ========================================================================== */
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--degnet-space-2xl);
+}
+
+.section-header h2 {
+  margin-bottom: var(--degnet-space-sm);
+}
+
+.impact-areas__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--degnet-space-lg);
+}
+
+.impact-areas__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--degnet-space-xl) var(--degnet-space-md);
+  gap: var(--degnet-space-md);
+}
+
+.impact-areas__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--degnet-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.impact-areas__label {
+  font-size: var(--degnet-text-lg);
+  color: var(--degnet-primary);
+}
+
+.impact-areas__desc {
+  font-size: var(--degnet-text-sm);
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .impact-areas__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .impact-areas__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ==========================================================================
+   Section 5 — Stories of Change (testimonial carousel)
+   ========================================================================== */
+
+.stories__carousel {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-lg);
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.stories__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--degnet-space-2xl);
+  gap: var(--degnet-space-md);
+}
+
+/* Circular photo placeholder */
+.stories__photo-placeholder {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: var(--degnet-tint);
+  color: var(--degnet-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 3px solid var(--degnet-primary);
+}
+
+/* Large decorative opening quote mark */
+.stories__quote-mark {
+  font-family: var(--degnet-font-heading);
+  font-size: 5rem;
+  color: var(--degnet-primary);
+  line-height: 0.5;
+  opacity: 0.2;
+  margin-top: var(--degnet-space-sm);
+}
+
+.stories__quote p {
+  font-family: var(--degnet-font-subheading);
+  font-size: var(--degnet-text-md);
+  font-style: italic;
+  color: var(--degnet-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--degnet-space-md);
+}
+
+.stories__author {
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  font-style: normal;
+}
+
+.stories__author cite {
+  font-style: normal;
+  color: var(--degnet-text-muted);
+  font-weight: 400;
+}
+
+/* Arrow buttons */
+.stories__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--degnet-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.stories__arrow:hover {
+  background-color: var(--degnet-primary-dark);
+}
+
+/* Dot pagination */
+.stories__dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--degnet-space-sm);
+  margin-top: var(--degnet-space-lg);
+}
+
+.stories__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--degnet-border);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+.stories__dot.is-active {
+  background-color: var(--degnet-primary);
+  transform: scale(1.3);
+}
+
+@media (max-width: 767px) {
+  .stories__carousel {
+    gap: var(--degnet-space-sm);
+  }
+
+  .stories__card {
+    padding: var(--degnet-space-lg);
+  }
+
+  .stories__arrow {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+/* ==========================================================================
+   CTA Banner
+   ========================================================================== */
+
+.cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--degnet-space-lg);
+}
+
+.cta__icon {
+  color: var(--degnet-gold);
+}
+
+.cta__heading {
+  color: #ffffff;
+  max-width: 640px;
+  font-size: var(--degnet-text-2xl);
+  line-height: 1.3;
+}
+
+.cta__heading b {
+  color: var(--degnet-gold);
+}
+
+.cta__btn {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.cta__btn:hover {
+  background-color: #ffffff;
+  color: var(--degnet-primary);
+}

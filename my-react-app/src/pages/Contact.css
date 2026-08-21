@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Contact Us Page Styles
+   --------------------------------------------------------------------------
+   All values reference design tokens from index.css.
+   No raw hex values or hardcoded sizes — use CSS custom properties only.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Section 2 — Two-column layout
+   ========================================================================== */
+
+.contact__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--degnet-space-2xl);
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .contact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   Left column — Contact info cards
+   ========================================================================== */
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-md);
+}
+
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--degnet-space-md);
+  padding: var(--degnet-space-lg);
+}
+
+/* Circular maroon icon badge */
+.contact-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--degnet-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-card__label {
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--degnet-space-xs);
+}
+
+.contact-card__value {
+  font-size: var(--degnet-text-base);
+  color: var(--degnet-text-muted);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.contact-card__link {
+  color: var(--degnet-text-muted);
+  transition: color 0.2s ease;
+}
+
+.contact-card__link:hover {
+  color: var(--degnet-primary);
+}
+
+/* Social icons row */
+.contact__social {
+  margin-top: var(--degnet-space-md);
+  padding: var(--degnet-space-lg);
+  background-color: var(--degnet-card-bg);
+  border-radius: var(--degnet-radius-lg);
+  box-shadow: var(--degnet-shadow-sm);
+}
+
+.contact__social-heading {
+  font-size: var(--degnet-text-base);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  margin-bottom: var(--degnet-space-md);
+}
+
+.contact__social-icons {
+  display: flex;
+  gap: var(--degnet-space-sm);
+}
+
+.contact__social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--degnet-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact__social-icon:hover {
+  background-color: var(--degnet-primary-dark);
+  transform: translateY(-2px);
+}
+
+
+/* ==========================================================================
+   Right column — Contact form
+   ========================================================================== */
+
+.contact__form-wrap {
+  padding: var(--degnet-space-2xl);
+}
+
+.contact__form-heading {
+  margin-bottom: var(--degnet-space-xl);
+}
+
+/* Success message */
+.contact__success {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-sm);
+  background-color: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #166534;
+  border-radius: var(--degnet-radius-md);
+  padding: var(--degnet-space-md) var(--degnet-space-lg);
+  margin-bottom: var(--degnet-space-xl);
+  font-size: var(--degnet-text-base);
+}
+
+.contact__success svg {
+  flex-shrink: 0;
+  color: #16a34a;
+}
+
+/* Form layout */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-lg);
+}
+
+/* Individual field */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-xs);
+}
+
+.form-field__label {
+  font-size: var(--degnet-text-sm);
+  font-weight: 600;
+  color: var(--degnet-text-secondary);
+}
+
+.form-field__input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--degnet-font-body);
+  font-size: var(--degnet-text-base);
+  color: var(--degnet-text);
+  background-color: var(--degnet-bg);
+  border: 2px solid var(--degnet-border);
+  border-radius: var(--degnet-radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-field__input::placeholder {
+  color: var(--degnet-border);
+}
+
+/* Focus state — maroon border matching csuganda.org's form style */
+.form-field__input:focus {
+  border-color: var(--degnet-primary);
+  box-shadow: 0 0 0 3px rgba(124, 0, 0, 0.1);
+}
+
+/* Error state */
+.form-field__input.is-error {
+  border-color: var(--degnet-accent-line);
+}
+
+.form-field__error {
+  font-size: var(--degnet-text-sm);
+  color: var(--degnet-accent-line);
+  font-weight: 500;
+}
+
+.form-field__textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* Submit button — full width */
+.contact__submit {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .contact__form-wrap {
+    padding: var(--degnet-space-lg);
+  }
+}

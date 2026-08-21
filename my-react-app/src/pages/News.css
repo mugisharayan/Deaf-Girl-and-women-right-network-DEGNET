@@ -1,0 +1,169 @@
+/* ==========================================================================
+   News & Stories Page Styles
+   --------------------------------------------------------------------------
+   All values reference design tokens from index.css.
+   No raw hex values or hardcoded sizes — use CSS custom properties only.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Section 2 — Filter tabs
+   ========================================================================== */
+
+.news-filters {
+  padding-block: var(--degnet-space-xl);
+  border-bottom: 1px solid var(--degnet-border);
+}
+
+.news-filters__tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-sm);
+  flex-wrap: wrap;
+}
+
+.news-filters__tab {
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--degnet-radius-pill);
+  font-family: var(--degnet-font-body);
+  font-size: var(--degnet-text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--degnet-border);
+  background-color: transparent;
+  color: var(--degnet-text-secondary);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.news-filters__tab:hover {
+  border-color: var(--degnet-primary);
+  color: var(--degnet-primary);
+}
+
+/* Active tab — filled maroon */
+.news-filters__tab.is-active {
+  background-color: var(--degnet-primary);
+  border-color: var(--degnet-primary);
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
+   Section 3 — News grid
+   ========================================================================== */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--degnet-space-lg);
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image placeholder — 16:9 aspect ratio */
+.news-card__image-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--degnet-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--degnet-primary);
+  flex-shrink: 0;
+}
+
+.news-card__body {
+  padding: var(--degnet-space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--degnet-space-sm);
+  flex: 1;
+}
+
+.news-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--degnet-space-sm);
+  flex-wrap: wrap;
+}
+
+.news-card__date {
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Category pill badge */
+.news-card__category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--degnet-primary);
+  background-color: var(--degnet-tint);
+  padding: 2px 10px;
+  border-radius: var(--degnet-radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.news-card__title {
+  font-size: var(--degnet-text-lg);
+  color: var(--degnet-primary);
+  line-height: 1.35;
+  flex: 1;
+}
+
+.news-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--degnet-space-xs);
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: auto;
+  transition: gap 0.2s ease;
+}
+
+.news-card__link:hover {
+  gap: var(--degnet-space-sm);
+}
+
+/* Empty state */
+.news-grid__empty {
+  text-align: center;
+  font-size: var(--degnet-text-md);
+  color: var(--degnet-text-muted);
+  padding: var(--degnet-space-3xl) 0;
+}
+
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   Section 4 — Load more
+   ========================================================================== */
+
+.news-more {
+  padding-block: var(--degnet-space-2xl);
+}
+
+.news-more__inner {
+  display: flex;
+  justify-content: center;
+}
