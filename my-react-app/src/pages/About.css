@@ -2,19 +2,9 @@
    About Us Page Styles
    --------------------------------------------------------------------------
    All values reference design tokens from index.css.
+   Shared utilities (section-header, cta__*) live in index.css.
    No raw hex values or hardcoded sizes — use CSS custom properties only.
    ========================================================================== */
-
-
-/* Shared section header — reused from Home, defined here for clarity */
-.section-header {
-  text-align: center;
-  margin-bottom: var(--degnet-space-2xl);
-}
-
-.section-header h2 {
-  margin-bottom: var(--degnet-space-sm);
-}
 
 
 /* ==========================================================================

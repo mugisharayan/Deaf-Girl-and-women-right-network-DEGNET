@@ -263,6 +263,98 @@ p {
 
 
 /* ==========================================================================
+   SHARED SECTION HEADER
+   --------------------------------------------------------------------------
+   Centered heading block reused across all pages.
+   Defined here once so no page CSS file needs to redeclare it.
+   ========================================================================== */
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--degnet-space-2xl);
+}
+
+.section-header h2 {
+  margin-bottom: var(--degnet-space-sm);
+}
+
+.section-header p {
+  max-width: 600px;
+  margin-inline: auto;
+  font-size: var(--degnet-text-md);
+}
+
+/* Row variant — heading left, link right (used on Home news section) */
+.section-header--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  flex-wrap: wrap;
+  gap: var(--degnet-space-md);
+}
+
+.section-header__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--degnet-space-xs);
+  font-family: var(--degnet-font-body);
+  font-size: var(--degnet-text-sm);
+  font-weight: 700;
+  color: var(--degnet-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: gap 0.2s ease;
+}
+
+.section-header__link:hover {
+  gap: var(--degnet-space-sm);
+}
+
+
+/* ==========================================================================
+   SHARED CTA BANNER
+   --------------------------------------------------------------------------
+   Full-width maroon band used on Home, Our Work, Our Impact pages.
+   Defined here once — no page CSS file should redeclare these.
+   ========================================================================== */
+
+.cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--degnet-space-lg);
+}
+
+.cta__icon {
+  color: var(--degnet-gold);
+}
+
+.cta__heading {
+  color: #ffffff;
+  max-width: 640px;
+  font-size: var(--degnet-text-2xl);
+  line-height: 1.3;
+}
+
+.cta__heading b {
+  color: var(--degnet-gold);
+}
+
+/* White outline button on dark background */
+.cta__btn {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.cta__btn:hover {
+  background-color: #ffffff;
+  color: var(--degnet-primary);
+}
+
+
+/* ==========================================================================
    5. BUTTON STYLES
    --------------------------------------------------------------------------
    Two variants only — no third button style should ever be introduced.

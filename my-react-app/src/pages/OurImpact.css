@@ -2,6 +2,7 @@
    Our Impact Page Styles
    --------------------------------------------------------------------------
    All values reference design tokens from index.css.
+   Shared utilities (section-header, cta__*) live in index.css.
    No raw hex values or hardcoded sizes — use CSS custom properties only.
    ========================================================================== */
 
@@ -82,14 +83,7 @@
    Section 4 — Impact Areas
    ========================================================================== */
 
-.section-header {
-  text-align: center;
-  margin-bottom: var(--degnet-space-2xl);
-}
-
-.section-header h2 {
-  margin-bottom: var(--degnet-space-sm);
-}
+/* Section header styles live in index.css */
 
 .impact-areas__grid {
   display: grid;
@@ -270,38 +264,5 @@
 
 
 /* ==========================================================================
-   CTA Banner
+   CTA Banner styles live in index.css
    ========================================================================== */
-
-.cta__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--degnet-space-lg);
-}
-
-.cta__icon {
-  color: var(--degnet-gold);
-}
-
-.cta__heading {
-  color: #ffffff;
-  max-width: 640px;
-  font-size: var(--degnet-text-2xl);
-  line-height: 1.3;
-}
-
-.cta__heading b {
-  color: var(--degnet-gold);
-}
-
-.cta__btn {
-  color: #ffffff;
-  border-color: #ffffff;
-}
-
-.cta__btn:hover {
-  background-color: #ffffff;
-  color: var(--degnet-primary);
-}

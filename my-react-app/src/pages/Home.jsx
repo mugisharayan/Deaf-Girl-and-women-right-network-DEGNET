@@ -248,12 +248,12 @@ function Home() {
             Together, we can build an <b>inclusive and equal society</b> for all.
           </h2>
 
-          <a href="/contact" className="btn-secondary cta__btn">
+          <Link to="/contact" className="btn-secondary cta__btn">
             Support Our Work
             <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
             </svg>
-          </a>
+          </Link>
 
         </div>
       </section>

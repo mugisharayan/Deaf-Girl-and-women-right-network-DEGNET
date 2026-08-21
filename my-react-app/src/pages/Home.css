@@ -2,57 +2,9 @@
    Home Page Styles
    --------------------------------------------------------------------------
    All values reference design tokens from index.css.
+   Shared utilities (section-header, cta__*) live in index.css.
    No raw hex values or hardcoded sizes — use CSS custom properties only.
    ========================================================================== */
-
-
-/* ==========================================================================
-   Shared section utilities
-   ========================================================================== */
-
-/* Centered section heading block used in most sections */
-.section-header {
-  text-align: center;
-  margin-bottom: var(--degnet-space-2xl);
-}
-
-.section-header h2 {
-  margin-bottom: var(--degnet-space-sm);
-}
-
-.section-header p {
-  max-width: 600px;
-  margin-inline: auto;
-  font-size: var(--degnet-text-md);
-}
-
-/* Row variant — heading on left, "View All" link on right */
-.section-header--row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: left;
-  flex-wrap: wrap;
-  gap: var(--degnet-space-md);
-}
-
-.section-header__link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--degnet-space-xs);
-  font-family: var(--degnet-font-body);
-  font-size: var(--degnet-text-sm);
-  font-weight: 700;
-  color: var(--degnet-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  transition: gap 0.2s ease;
-}
-
-.section-header__link:hover {
-  gap: var(--degnet-space-sm);
-}
-
 
 /* ==========================================================================
    Section 1 — Hero
@@ -405,40 +357,5 @@
 
 
 /* ==========================================================================
-   Section 6 — CTA Banner
+   Section 6 — CTA Banner (styles live in index.css)
    ========================================================================== */
-
-.cta__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--degnet-space-lg);
-}
-
-.cta__icon {
-  color: var(--degnet-gold);
-}
-
-.cta__heading {
-  color: #ffffff;
-  max-width: 640px;
-  font-size: var(--degnet-text-2xl);
-  line-height: 1.3;
-}
-
-/* On dark background, override the gold <b> to white for readability */
-.cta__heading b {
-  color: var(--degnet-gold);
-}
-
-/* White outline button on dark background */
-.cta__btn {
-  color: #ffffff;
-  border-color: #ffffff;
-}
-
-.cta__btn:hover {
-  background-color: #ffffff;
-  color: var(--degnet-primary);
-}

@@ -13,8 +13,7 @@ import Contact   from './pages/Contact'
  * App — root component
  *
  * Defines the 6 routes for the DEGNET website.
- * Header and Footer will be added here in Prompt 1 so they appear
- * on every page without repeating them inside each page component.
+ * Header and Footer wrap every route so they appear on every page.
  *
  * Routes:
  *   /             → Home
